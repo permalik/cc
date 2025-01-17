@@ -1,7 +1,32 @@
 #include <stdio.h>
+#include <stdlib.h>
 int main() {
     printf("starting...");
-    return 0;
+
+    const char* file_name = "/Users/tymalik/Documents/git/cc/src/test.c";
+    int is_ok = EXIT_FAILURE;
+
+    FILE* file_path = fopen(file_name, "r");
+    if (!file_path) {
+        perror("failed to open file");
+        return is_ok;
+    }
+
+    int c;
+    while ((c = fgetc(file_path)) != EOF) {
+        putchar(c);
+    }
+
+    if (ferror(file_path)) {
+        puts("io error when reading");
+    } else if (feof(file_path)) {
+        puts("end of file reached");
+        is_ok = EXIT_SUCCESS;
+    }
+
+    fclose(file_path);
+    remove(file_name);
+    return is_ok;
 }
 
 // - [ ] Keywords

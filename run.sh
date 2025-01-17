@@ -12,6 +12,8 @@ if [ -d "$build_dir" ]; then
     rm -rf ./build
 fi
 
+echo "copying test asset.."
+cp "test.c" src
 echo "creating build directory.."
 mkdir -p build
 cd build || exit

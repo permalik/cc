@@ -5,6 +5,7 @@ project(cc C) # Define the project name and language
 # Set the C standard
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
+set(CMAKE_OSX_SYSROOT "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk")
 
 # Add compile_options for debug information
 add_compile_options(-g)
